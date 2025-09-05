@@ -29,7 +29,7 @@
     tick: function (time, deltaTime) {
       // rotation autour de l'axe Z local du wrapper
       const rot = this.el.object3D.rotation;
-      rot.z += (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
+      rot.x += (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
     }
   });
 </script>
