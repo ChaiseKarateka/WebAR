@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Exercice 3 AR.js Interaction</title>
+    <title>Exercice 4 AR.js Marker personnalisé</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <!-- AR.js -->
@@ -11,52 +11,14 @@
   <body style="margin:0; overflow:hidden;">
     <a-scene embedded arjs>
       
-      <!-- Marqueur Hiro -->
-      <a-marker preset="hiro">
-        <!-- Boîte interactive -->
-        <a-box id="box" color="blue" opacity="0.6" depth="1" height="1" width="1"
-               animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
-        </a-box>
+      <!-- Marker personnalisé -->
+      <a-marker type="pattern" url="pattern_Fez.patt">
+        <!-- Objet 3D (un tétraèdre) -->
+        <a-entity gltf-model="url(tardis.glb)" scale="0.5 0.5 0.5" animation="property: rotation; to: 360 360 0; loop: true; dur: 6000"></a-entity>
       </a-marker>
 
-      <!-- Caméra avec curseur -->
-      <a-entity camera>
-        <a-cursor cursor="rayOrigin: mouse" raycaster="objects: .clickable">
-        </a-cursor>
-      </a-entity>
+      <!-- Caméra AR -->
+      <a-entity camera></a-entity>
     </a-scene>
-
-    <script>
-      // Récupération de la boîte
-      const box = document.querySelector('#box');
-
-      // Marquer la boîte comme "cliquable" pour le raycaster
-      box.classList.add('clickable');
-
-      // Interaction au clic/tap
-      box.addEventListener('click', () => {
-        // Changer la couleur
-        const colors = ['blue', 'red', 'green', 'yellow', 'purple'];
-        const newColor = colors[Math.floor(Math.random() * colors.length)];
-        box.setAttribute('color', newColor);
-
-        // Déclencher une animation plus rapide de rotation
-        box.setAttribute('animation', {
-          property: 'rotation',
-          to: '0 360 0',
-          loop: true,
-          dur: 1000  // plus rapide
-        });
-
-        // Déclencher aussi une animation d’échelle
-        box.setAttribute('animation__scale', {
-          property: 'scale',
-          to: '1.5 1.5 1.5',
-          dur: 500,
-          dir: 'alternate',
-          loop: 2
-        });
-      });
-    </script>
   </body>
 </html>
