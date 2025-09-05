@@ -14,14 +14,30 @@
       <!-- Marker personnalisé -->
       <a-marker type="pattern" url="pattern-tard.patt">
         
+        <a-entity id="rotator" rotate-perp-marker>
         <!-- Modèle GLB -->
-        <a-entity gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="url(tardis.glb)" scale="0.5 0.5 0.5"></a-entity>
+      </a-entity>
         
       </a-marker>
 
       <!-- Caméra AR -->
       <a-entity camera></a-entity>
     </a-scene>
+
+<script>
+    AFRAME.registerComponent('rotate-perp-marker', {
+      schema: { speed: { type: 'number', default: 45 } }, // degrés par seconde
+      init: function () {
+        this.group = this.el.object3D;
+      },
+      tick: function (time, deltaTime) {
+        // Rotation autour de l'axe Z local du marker
+        const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
+        this.group.rotateOnAxis(new THREE.Vector3(0, 0, 1), angle);
+      }
+    });
+  </script>
     
   </body>
 </html>
