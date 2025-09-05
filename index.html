@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scène A-Frame</title>
+    <!-- Import de la bibliothèque A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Plan de base -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+
+      <!-- Trois boîtes lévitant à 2 unités au-dessus du plan -->
+      <a-box position="-3 2 -2" color="red"></a-box>
+      <a-box position="0 2 0" color="blue"></a-box>
+      <a-box position="3 2 2" color="yellow"></a-box>
+
+      <!-- Caméra à 10 de haut et 15 de distance -->
+      <a-entity position="0 10 15" rotation="-30 0 0">
+        <a-camera></a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
