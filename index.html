@@ -36,7 +36,7 @@
     tick: function (time, deltaTime) {
       // rotation autour de l'axe Z local du marker
       const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
-      this.model3D.rotateOnAxis(new THREE.Vector3(0,1,0), angle);
+      this.model3D.rotateOnAxis(new THREE.Vector3(1,0,0), angle);
     }
   });
 
