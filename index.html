@@ -33,11 +33,11 @@
       container.appendChild(model);
       this.model3D = container.object3D;
     },
-    tick: function (time, deltaTime) {
+    //tick: function (time, deltaTime) {
       // rotation autour de l'axe Z local du marker
-      const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
-      this.model3D.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
-    }
+      //const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
+      //this.model3D.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    //}
   });
 
   // Attacher au conteneur
