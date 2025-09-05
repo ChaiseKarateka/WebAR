@@ -14,7 +14,12 @@
       <!-- Marker personnalisé -->
       <a-marker preset="hiro">
         <!-- Objet 3D -->
-        <a-entity gltf-model="url(tardis.glb)" scale="0.05 0.05 0.05" animation="property: rotation; to: 0 360 0; loop: true; dur: 6000"></a-entity>
+        <a-entity gltf-model="url(tardis.glb)" scale="0.05 0.05 0.05" rotation="0 0 0"
+                  animation="property: rotation;
+                             to: 0 0 360;
+                             loop: true;
+                             dur: 5000;
+                             easing: linear"></a-entity>
       </a-marker>
 
       <!-- Caméra AR -->
