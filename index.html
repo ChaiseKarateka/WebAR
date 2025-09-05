@@ -14,16 +14,23 @@
       <!-- Marker personnalisé -->
       <a-marker preset="hiro">
         <!-- Objet 3D -->
-        <a-entity gltf-model="url(tardis.glb)" scale="0.05 0.05 0.05" rotation="0 0 0"
-                  animation="property: rotation;
-                             to: 0 0 360;
-                             loop: true;
-                             dur: 5000;
-                             easing: linear"></a-entity>
+        <a-entity gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1" rotation="0 0 0" rotate-around-marker></a-entity>
       </a-marker>
 
       <!-- Caméra AR -->
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      // Composant A-Frame : rotation continue autour de l'axe Z local
+      AFRAME.registerComponent('rotate-around-marker', {
+        tick: function (time, deltaTime) {
+          const mesh = this.el.object3D;
+          mesh.rotation.z += (deltaTime / 1000) * Math.PI / 2; 
+          // => 90°/seconde, toujours autour de l'axe perpendiculaire au marker
+        }
+      });
+    </script>
+    
   </body>
 </html>
