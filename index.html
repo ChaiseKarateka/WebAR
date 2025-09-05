@@ -13,8 +13,10 @@
       
       <!-- Marker personnalisé -->
       <a-marker preset="hiro">
-        <!-- Objet 3D -->
-        <a-entity id="model-container"></a-entity>
+        <a-entity id="rotator" rotate-perp-marker>
+        <!-- Modèle GLB -->
+          <a-entity gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
+        </a-entity>
       </a-marker>
 
       <!-- Caméra AR -->
@@ -22,27 +24,18 @@
     </a-scene>
 
     <script>
-  AFRAME.registerComponent('rotate-perp-marker', {
-    schema: { speed: { type: 'number', default: 45 } }, // degrés/sec
-    init: function () {
-      const container = this.el; 
-      // Charger le modèle
-      const model = document.createElement('a-entity');
-      model.setAttribute('gltf-model', 'url(tardis.glb)');
-      model.setAttribute('scale', '0.1 0.1 0.1');
-      container.appendChild(model);
-      this.model3D = container.object3D;
-    },
-    tick: function (time, deltaTime) {
-      // rotation autour de l'axe Z local du marker
-      const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
-      this.model3D.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
-    }
-  });
-
-  // Attacher au conteneur
-  document.querySelector('#model-container').setAttribute('rotate-perp-marker', '');
-</script>
+    AFRAME.registerComponent('rotate-perp-marker', {
+      schema: { speed: { type: 'number', default: 45 } }, // degrés par seconde
+      init: function () {
+        this.group = this.el.object3D;
+      },
+      tick: function (time, deltaTime) {
+        // Rotation autour de l'axe Z local du marker
+        const angle = (this.data.speed * Math.PI / 180) * (deltaTime / 1000);
+        this.group.rotateOnAxis(new THREE.Vector3(0, 0, 1), angle);
+      }
+    });
+  </script>
     
   </body>
 </html>
