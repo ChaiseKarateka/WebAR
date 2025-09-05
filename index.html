@@ -26,7 +26,7 @@
       AFRAME.registerComponent('rotate-around-marker', {
         tick: function (time, deltaTime) {
           const mesh = this.el.object3D;
-          mesh.rotation.y += (deltaTime / 1000) * Math.PI / 2; 
+          mesh.rotation.x += (deltaTime / 1000) * Math.PI / 2; 
           // => 90°/seconde, toujours autour de l'axe perpendiculaire au marker
         }
       });
