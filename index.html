@@ -41,7 +41,7 @@
       
       <!-- Marker personnalisé -->
       <a-marker type="pattern" url="pattern-tard.patt">
-        <a-entity gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity id="myBox" color="blue" gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
       </a-marker>
 
       <!-- Caméra AR -->
@@ -71,7 +71,7 @@
 
     // Changer la taille en temps réel
     slider.addEventListener('input', (e) => {
-      const size = e.target.value;
+      const size = e.target.value*0.1;
       box.setAttribute('scale', `${size} ${size} ${size}`);
     });
 
