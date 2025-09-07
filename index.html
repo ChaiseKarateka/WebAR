@@ -41,8 +41,15 @@
       
       <!-- Marker personnalisé -->
       <a-marker type="pattern" url="pattern-tard.patt">
-        <a-entity id="myBox" color="blue" gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="url(tardis.glb)" scale="0.1 0.1 0.1"></a-entity>
       </a-marker>
+
+      <!-- Marker Hiro -->
+    <a-marker preset="hiro" id="hiroMarker">
+      <a-box id="myBox" color="blue" scale="1 1 1" opacity="0.8"
+             animation="property: rotation; to: 0 360 0; loop: true; dur: 6000">
+      </a-box>
+    </a-marker>
 
       <!-- Caméra AR -->
       <a-entity camera></a-entity>
