@@ -2,11 +2,39 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Exercice 4 AR.js Marker personnalisé</title>
+    <title>TP WebAR</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <!-- AR.js -->
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+
+    <style>
+      /* Style pour l'UI overlay */
+      #ui {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255,255,255,0.9);
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: none; /* caché par défaut */
+        text-align: center;
+        font-family: sans-serif;
+      }
+      #color-buttons button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #color-red { background: red; }
+      #color-green { background: green; }
+      #color-blue { background: blue; }
+    </style>
+    
   </head>
   <body style="margin:0; overflow:hidden;">
     <a-scene embedded arjs>
