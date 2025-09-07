@@ -47,6 +47,45 @@
       <!-- Caméra AR -->
       <a-entity camera></a-entity>
     </a-scene>
+
+  <!-- UI DOM Overlay -->
+  <div id="ui">
+    <label for="sizeRange">Taille :</label>
+    <input id="sizeRange" type="range" min="0.1" max="3.0" step="0.1" value="1">
+    <div id="color-buttons">
+      <button id="color-red"></button>
+      <button id="color-green"></button>
+      <button id="color-blue"></button>
+    </div>
+  </div>
+
+  <script>
+    const box = document.querySelector('#myBox');
+    const ui = document.querySelector('#ui');
+    const marker = document.querySelector('#hiroMarker');
+    const slider = document.querySelector('#sizeRange');
+
+    // Afficher/masquer l'UI selon la détection du marker
+    marker.addEventListener('markerFound', () => { ui.style.display = 'block'; });
+    marker.addEventListener('markerLost', () => { ui.style.display = 'none'; });
+
+    // Changer la taille en temps réel
+    slider.addEventListener('input', (e) => {
+      const size = e.target.value;
+      box.setAttribute('scale', `${size} ${size} ${size}`);
+    });
+
+    // Changer la couleur via les boutons
+    document.querySelector('#color-red').addEventListener('click', () => {
+      box.setAttribute('color', 'red');
+    });
+    document.querySelector('#color-green').addEventListener('click', () => {
+      box.setAttribute('color', 'green');
+    });
+    document.querySelector('#color-blue').addEventListener('click', () => {
+      box.setAttribute('color', 'blue');
+    });
+  </script>
     
   </body>
 </html>
